@@ -11,24 +11,24 @@ class TestTeam < MiniTest::Test
 
   def test_players_names()
     team = Team.new("The Trotters", ["George", "Michael", "Trinity", "Eddie", "Sandy"], "Hill Rothers", 0)
-    assert_equal(["George", "Michael", "Trinity", "Eddie", "Sandy"], team.players_names)
+    assert_equal(["George", "Michael", "Trinity", "Eddie", "Sandy"], team.players)
   end
 
   def test_coach_name()
     team = Team.new("The Trotters", ["George", "Michael", "Trinity", "Eddie", "Sandy"], "Hill Rothers", 0)
-    assert_equal("Hill Rothers", team.coach_name)
+    assert_equal("Hill Rothers", team.coach)
   end
 
   def test_set_new_coach()
     team = Team.new("The Trotters", ["George", "Michael", "Trinity", "Eddie", "Sandy"], "Hill Rothers", 0)
     team.set_new_coach("Maggie Smith")
-    assert_equal("Maggie Smith", team.coach_name)
+    assert_equal("Maggie Smith", team.coach)
   end
 
   def test_add_new_player()
     team = Team.new("The Trotters", ["George", "Michael", "Trinity", "Eddie", "Sandy"], "Hill Rothers", 0)
     team.add_new_player("Billy")
-    assert_equal(["George", "Michael", "Trinity", "Eddie", "Sandy", "Billy"], team.players_names)
+    assert_equal(["George", "Michael", "Trinity", "Eddie", "Sandy", "Billy"], team.players)
   end
 
   def test_check_player_in_team__return_true()

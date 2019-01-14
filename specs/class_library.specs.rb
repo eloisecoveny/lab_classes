@@ -28,17 +28,21 @@ class TestLibrary < MiniTest::Test
   end
 
   def test_get_book_info()
-    books = Library.new("Norweigan Wood",
-      {
+    books = Library.new([{
+      title: "Norweigan Wood",
+      rental_details: {
         student_name: "Eloise",
         date: "14/01/19"
         }
+      }
     )
     result = books.get_book_info("Norweigan Wood")
-    assert_equal({"Norweigan Wood",
-      {
+    assert_equal([{
+      title: "Norweigan Wood",
+      rental_details: {
         student_name: "Eloise",
-        date: "14/01/19"}, result)
+        date: "14/01/19"
+        }}], result)
   end
 
   def test_get_rental_details()

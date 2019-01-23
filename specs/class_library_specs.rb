@@ -65,6 +65,10 @@ class TestLibrary < MiniTest::Test
   def test_update_rental_details
     updated_book = @library.update_rental_details("Norweigan Wood", "Laura", "25/01/19")
     assert_equal(@book1, updated_book)
+    assert_equal({
+      student_name: "Laura",
+      date: "25/01/19"
+    }, @book1[:rental_details])
   end
 
 

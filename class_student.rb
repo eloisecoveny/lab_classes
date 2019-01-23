@@ -1,11 +1,11 @@
 class Student
 
-  def initialize(student_name, cohort)
-    @name = student_name
+  def initialize(name, cohort)
+    @name = name
     @cohort = cohort
   end
 
-  def get_student_name()
+  def get_name()
     return @name
   end
 
@@ -13,15 +13,19 @@ class Student
     return @cohort
   end
 
-  def set_student_name(new_name)
+  def set_name(new_name)
     @name = new_name
   end
 
-  def student_talks(string)
-    return string
+  def set_cohort(new_cohort)
+    @cohort = new_cohort
   end
 
-  def student_favourite_language(favourite_language)
+  def talk()
+    return "I can talk"
+  end
+
+  def favourite_language(favourite_language)
     return "I love #{favourite_language}"
   end
 

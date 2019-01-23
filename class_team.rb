@@ -1,31 +1,32 @@
 class Team
 
-  attr_accessor :team_name, :players, :coach, :points
+  attr_accessor :coach
+  attr_reader :team_name, :players, :points
 
-  def initialize(team_name, players, coach, points)
+  def initialize(team_name, players, coach)
     @team_name = team_name
     @players = players
     @coach = coach
-    @points = points
+    @points = 0
   end
 
-  def team_name()
-    return @team_name
-  end
+  # def get_name()
+  #   return @team_name
+  # end
+  #
+  # def get_players()
+  #   return @players
+  # end
+  #
+  # def get_coach()
+  #   return @coach
+  # end
 
-  def players_names()
-    return @players
-  end
+  # def set_coach(new_coach)
+  #   @coach = new_coach
+  # end
 
-  def coach_name()
-    return @coach
-  end
-
-  def set_new_coach(new_coach)
-    @coach = new_coach
-  end
-
-  def add_new_player(new_player)
+  def add_player(new_player)
     @players << new_player
   end
 
@@ -35,9 +36,8 @@ class Team
     return false
   end
 
-  def team_points(result)
-    return @points += 5 if result == "won"
-    return @points += 0 if result == "lost"
+  def update_points(result)
+    @points += 1 if result == "win"
   end
 
 

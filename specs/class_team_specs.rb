@@ -4,53 +4,52 @@ require_relative("../class_team.rb")
 
 class TestTeam < MiniTest::Test
 
-  def test_team_name()
-    team = Team.new("The Trotters", ["George", "Michael", "Trinity", "Eddie", "Sandy"], "Hill Rothers", 0)
-    assert_equal("The Trotters", team.team_name)
+  def setup
+    @players = ["George", "Michael", "Trinity", "Eddie", "Sandy"]
+    @team = Team.new("The Trotters", @players, "Hill Rothers")
   end
 
-  def test_players_names()
-    team = Team.new("The Trotters", ["George", "Michael", "Trinity", "Eddie", "Sandy"], "Hill Rothers", 0)
-    assert_equal(["George", "Michael", "Trinity", "Eddie", "Sandy"], team.players)
+  def test_get_name
+    assert_equal("The Trotters", @team.team_name)
   end
 
-  def test_coach_name()
-    team = Team.new("The Trotters", ["George", "Michael", "Trinity", "Eddie", "Sandy"], "Hill Rothers", 0)
-    assert_equal("Hill Rothers", team.coach)
+  def test_get_players
+    expected = @players
+    assert_equal(expected, @team.players)
   end
 
-  def test_set_new_coach()
-    team = Team.new("The Trotters", ["George", "Michael", "Trinity", "Eddie", "Sandy"], "Hill Rothers", 0)
-    team.set_new_coach("Maggie Smith")
-    assert_equal("Maggie Smith", team.coach)
+  def test_get_coach
+    assert_equal("Hill Rothers", @team.coach)
   end
 
-  def test_add_new_player()
-    team = Team.new("The Trotters", ["George", "Michael", "Trinity", "Eddie", "Sandy"], "Hill Rothers", 0)
-    team.add_new_player("Billy")
-    assert_equal(["George", "Michael", "Trinity", "Eddie", "Sandy", "Billy"], team.players)
+  def test_set_coach
+    @team.coach = "Maggie Smith"
+    assert_equal("Maggie Smith", @team.coach)
   end
 
-  def test_check_player_in_team__return_true()
-    team = Team.new("The Trotters", ["George", "Michael", "Trinity", "Eddie", "Sandy"], "Hill Rothers", 0)
-    assert_equal(true, team.check_player_in_team("Eddie"))
+  def test_add_player
+    expected = 6
+    @team.add_player("Billy")
+    assert_equal(expected, @team.players.length)
   end
 
-  def test_check_player_in_team__return_false()
-    team = Team.new("The Trotters", ["George", "Michael", "Trinity", "Eddie", "Sandy"], "Hill Rothers", 0)
-    assert_equal(false, team.check_player_in_team("Nina"))
+  def test_check_player_in_team__return_true
+    in_team = @team.check_player_in_team("Eddie")
+    assert_equal(true, in_team)
   end
 
-  def test_team_points__won()
-    team = Team.new("The Trotters", ["George", "Michael", "Trinity", "Eddie", "Sandy"], "Hill Rothers", 0)
-    points = team.team_points("won")
-    assert_equal(5, team.points)
+  def test_check_player_in_team__return_false
+    in_team = @team.check_player_in_team("Nina")
+    assert_equal(false, in_team)
   end
 
-  def test_team_points__lost()
-    team = Team.new("The Trotters", ["George", "Michael", "Trinity", "Eddie", "Sandy"], "Hill Rothers", 0)
-    points = team.team_points("lost")
-    assert_equal(0, team.points)
+  def test_get_points
+    assert_equal(0, @team.points)
+  end
+
+  def test_update_points
+    @team.update_points("win")
+    assert_equal(1, @team.points)
   end
 
 
